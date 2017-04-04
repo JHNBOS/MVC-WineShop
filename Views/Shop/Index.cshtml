@@ -1,0 +1,69 @@
+@using WineShop.Models;
+@model IEnumerable<WineShop.Models.Wine>
+
+@{
+    ViewData["Title"] = "Wines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    WineShop.Models.User user = null;
+
+    if (SessionHelper.IsExists(Context.Session, "User"))
+    {
+        user = SessionHelper.Get<WineShop.Models.User>(Context.Session, "User");
+    }
+}
+
+<h2>Shop for wines</h2>
+
+<table class="table" id="tblWines">
+
+    @for (var i = 0; i < ViewBag.Wines.Count; i++)
+    {
+        var item = ViewBag.Wines[i];
+
+        @if (i == 0 || (i % 3 == 0))
+        {
+            Html.Raw("<tr>");
+        }
+
+        <td>
+            <div class="col-sm-12 col-md-12">
+                <a href="@Url.Action("Details", new { id=item.ID })">
+                    <img src=@Url.Content(String.Format("~/images/uploads/{0}", item.ImagePath)) style="border-radius:2px;height:15%;width:15%;" />
+                </a>
+
+                <br />
+                <br />
+
+                <p class="text-primary"><b>@Html.Raw(item.Name)</b></p>
+
+                @Html.Raw(item.WineType)
+
+                <br />
+
+                @Html.Raw(item.Winery.Country)
+
+                <br />
+
+                <b>
+                    @Html.Raw(String.Format("&euro;{0:C2}", item.Price))
+                </b>
+
+                <br />
+
+                <a href="@Url.Action("Create", "Cart",  new { clientID= user.ID, productID = item.ID })" class="btn btn-info btn-xs" style="margin-top:8px;" onclick="alert('Product has been added to cart!')">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <span>&nbsp; Add To Cart</span>
+                </a>
+                    
+            </div>
+        </td>
+
+        @if (i % 3 == 2 || i == (ViewBag.Wines.Count - 1))
+        {
+            Html.Raw("</tr>");
+        }
+
+    }
+
+</table>

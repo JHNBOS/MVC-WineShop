@@ -1,0 +1,113 @@
+﻿body {
+    padding-top: 40px;
+    padding-bottom: 20px;
+
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    background-attachment: fixed;
+
+    background-image: url(../images/bg.jpg);
+}
+
+.white{
+    background-color: white;
+    opacity: 0.9;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* buttons and links extension to use brackets: [ click me ] */
+.btn-bracketed::before {
+    display:inline-block;
+    content: "[";
+    padding-right: 0.5em;
+}
+.btn-bracketed::after {
+    display:inline-block;
+    content: "]";
+    padding-left: 0.5em;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"]
+{
+    width: 100%;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+  /* Hide captions */
+  .carousel-caption {
+    display: none
+  }
+}
+
+/* CUSTOM CSS */
+#showImg{
+    margin-top: 25px;
+    max-height: 60%;
+    max-width: 60%;
+}
+
+#wineImg{
+    margin-top: 0px;
+    max-height: 60%;
+    max-width: 60%;
+}
+
+#tblWines{
+    width: 100%;
+    font-size: 15px;
+    border: none;
+    margin: 50px 10% 25px 10%;
+    table-layout: auto;
+}
+
+#tblWines td{
+    border: none;
+    padding: 0 0 0 0 !important;
+    margin: 0 0 0 0 !important;
+    border-collapse: collapse;
+    clear: both;
+    width: 33.33%;
+    height: 350px;
+}
+
+#tblWines tr:first-child{
+    border-collapse: collapse;
+    border-top: 0px solid black;
+    padding: 0 0 0 0 !important;
+    margin: 0 0 0 0 !important;
+    display: block;
+    clear: both;
+    display: flex;
+}
+
+#tblWines tr{
+    border-collapse: collapse;
+    border-top: 1px solid #d5d5d5;
+    padding: 30px 0 0 0 !important;
+    margin: 0 0 0 0 !important;
+    display: block;
+    clear: both;
+    display: flex;
+}

@@ -1,0 +1,137 @@
+@model WineShop.Models.Wine
+
+@{
+    ViewData["Title"] = "Edit Wine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<div class="row">
+    <div class="col-sm-1 col-md-1"></div>
+    <div class="col-sm-5 col-md-5">
+
+        <!--BEGIN OF COLUMN 1-->
+
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div class="form-horizontal">
+                <h4>Wine</h4>
+                <hr />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Name" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="WineType" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <select asp-for="WineType" asp-items="@Html.GetEnumSelectList<WineType>()" class="form-control"></select>
+                        <span asp-validation-for="WineType" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="AlcoholPercentage" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="AlcoholPercentage" class="form-control" />
+                        <span asp-validation-for="AlcoholPercentage" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Year" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Year" class="form-control" />
+                        <span asp-validation-for="Year" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Price" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ImagePath" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input type="file" id="fileUpload" class="form-control" name="file" />
+                        <span asp-validation-for="ImagePath" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="WineryID" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <select asp-for="WineryID" class="form-control" asp-items="ViewBag.WineryID"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+        <div>
+            <a asp-action="Index">Back to Wines</a>
+        </div>
+
+        <!--END OF COLUMN 1-->
+    </div>
+    <div class="col-sm-5 col-md-5 text-center">
+        <!--BEGIN OF COLUMN 2-->
+
+        <div id="preview">
+            <img id="showImg" src="#" alt="Wine" />
+        </div>
+
+        <!--END OF COLUMN 2-->
+
+    </div>
+    <div class="col-sm-1 col-md-1"></div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script language="javascript" type="text/javascript">
+    $('#showImg').attr('src', "http://localhost:51485/images/uploads/@Model.ImagePath");
+
+    $(function () {
+        $(":file").change(function () {
+            if (this.files && this.files[0]) {
+                var img = document.getElementById('showImg');
+                img.style.visibility = 'visible';
+
+                var reader = new FileReader();
+                reader.onload = imageIsLoaded;
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    });
+
+    function imageIsLoaded(e) {
+        $('#showImg').attr('src', e.target.result);
+    };
+</script>
+}

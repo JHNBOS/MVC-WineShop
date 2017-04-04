@@ -1,0 +1,96 @@
+@model WineShop.Models.Wine
+
+@{
+    ViewData["Title"] = "Delete Wine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<div class="form-horizontal">
+    <h4>Winery</h4>
+    <hr />
+    <div class="row">
+        <div class="col-sm-1 col-md-1"></div>
+        <div class="col-sm-4 col-md-4">
+            <br />
+            <br />
+            <br />
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.WineType)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.WineType)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AlcoholPercentage)
+                </dt>
+                <dd>
+                    @Html.Raw(String.Format("{0}%", Model.AlcoholPercentage))
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Year)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Year)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd>
+                    @Html.Raw(String.Format("&euro;{0}", Model.Price))
+                </dd>
+                <dt>
+                    <br />
+                </dt>
+                <dd>
+
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Winery)
+                </dt>
+                <dd>
+                    @Html.Raw(ViewBag.Winery.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Winery.Country)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Winery.Country)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-sm-5 col-md-5 text-center">
+            <img src="~/images/uploads/@Model.ImagePath" alt="Wine" id="wineImg" />
+        </div>
+        <div class="col-sm-2 col-md-2"></div>
+    </div>
+</div>
+
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+        </div>
+    </form>
+
+    <br />
+    <br />
+    <br />
+
+    <div class="col-md-offset-0 col-md-10">
+        <a asp-action="Index">Back to Wines</a>
+    </div>
