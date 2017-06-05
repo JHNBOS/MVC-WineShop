@@ -13,35 +13,24 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Wine)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Wine.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.AddedOn)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.AddedOn)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ClientID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ClientID)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.StatusID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.StatusID)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.WineID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.WineID)
         </dd>
     </dl>
     
     <form asp-action="Delete">
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            <a asp-action="Index">Back to List</a>
+            <a asp-action="Index">Back to Cart</a>
         </div>
     </form>
 </div>

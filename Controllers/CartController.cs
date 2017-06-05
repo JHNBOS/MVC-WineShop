@@ -125,20 +125,22 @@ namespace WineShop.Controllers
         }
 
         // GET: Cart/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task Delete(int? id)
         {
+            /*
             if (id == null)
             {
-                return NotFound();
+                //return NotFound();
             }
 
-            var cart = await _context.Cart.SingleOrDefaultAsync(m => m.ID == id);
+            //var cart = _context.Cart.SingleOrDefault(m => m.ID == id);
             if (cart == null)
             {
-                return NotFound();
+                //return NotFound();
             }
-
-            return View(cart);
+            */
+            await DeleteConfirmed((int)id);
+            //return View(cart);
         }
 
         // POST: Cart/Delete/5
